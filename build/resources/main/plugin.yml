@@ -1,0 +1,8 @@
+name: mcds
+version: 1.0-SNAPSHOT
+main: org.fc.Mcds.Mcds
+api-version: '1.21'
+commands:
+  hint:
+    description: ヒントを表示します
+    usage: /hint <謎番号>-<ヒント番号>
