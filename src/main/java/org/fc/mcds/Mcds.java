@@ -17,26 +17,26 @@ import java.util.Map;
 
 public final class Mcds extends JavaPlugin implements Listener {
 
-    // ヒント本文の辞書。 キー("3-1") → 本文(複数行)
-    // HashMap ではなく LinkedHashMap なのは、put した順番を覚えていてほしいから。
-    // HashMap だと /hint の一覧が 2-3, 1-1, 3-2 ... のようにバラバラに並ぶ。
+    
+    
+    
     private final Map<String, String[]> hints = new LinkedHashMap<>();
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this); // このクラスのイベントを処理するように指定
-        setupHints();                                              // ヒント本文を辞書に詰める
+        getServer().getPluginManager().registerEvents(this, this); 
+        setupHints();                                              
     }
 
     @Override
     public void onDisable() {
     }
 
-    // ===================================================================
-    //  ヒント本文
-    //  文言を直すときはここだけ触れば済む。
-    //  謎を増やしたいときは put をもう1つ足すだけで /hint 4-1 が使えるようになる。
-    // ===================================================================
+    
+    
+    
+    
+    
     private void setupHints() {
 
         hints.put("1-1", new String[]{
@@ -107,21 +107,21 @@ public final class Mcds extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("hint")) {
 
-            // 引数なし → 一覧を出す
+            
             if (args.length == 0) {
                 sendIndex(sender);
                 return true;
             }
 
-            // 「/hint 3-1」も「/hint 3 1」も同じ "3-1" というキーにそろえる。
-            //   {"3-1"}     → つなぐ相手がいないので "3-1"
-            //   {"3", "1"}  → "-" ではさんで   "3-1"
+            
+            
+            
             String key = String.join("-", args);
 
             String[] lines = hints.get(key);
 
-            // get() は見つからないと null を返す。
-            // ここを飛ばして for に渡すと NullPointerException で落ちる。
+            
+            
             if (lines == null) {
                 sender.sendMessage("§cヒント " + key + " はありません。 §7/hint §cで一覧を確認してください。");
                 return true;
@@ -131,28 +131,24 @@ public final class Mcds extends JavaPlugin implements Listener {
                 sender.sendMessage(line);
             }
 
-            // 誰がどのヒントを開いたかを記録する。
-            // logs/latest.log に残るので、本番が終わった後に読み返せる。
-            // null チェックより後ろに置くこと。前に置くと打ち間違いまで記録されてしまう。
+            
+            
+            
             getLogger().info("[hint] " + sender.getName() + " -> " + key);
 
             return true;
         }
         return false;
     }
-
-    /**
-     * 用意されているヒントを一覧表示する。
-     * 各行はクリックするとそのままコマンドが実行される。
-     */
+\
     private void sendIndex(CommandSender sender) {
         sender.sendMessage("§8──────── §6ヒント一覧§8 ────────");
 
-        // keySet() で「キーだけ」を全部取り出す。 → 1-1, 1-2, 1-3, 2-1, ...
+        
         for (String key : hints.keySet()) {
 
-            // §a のような文字コードでは色と装飾しか付けられず、クリックは表現できない。
-            // クリックやホバーを持たせたいときは Component を組み立てる。
+            
+            
             Component line = Component.text("  /hint " + key, NamedTextColor.YELLOW)
                     .clickEvent(ClickEvent.runCommand("/hint " + key))
                     .hoverEvent(HoverEvent.showText(Component.text("クリックで開く", NamedTextColor.GRAY)));
@@ -163,8 +159,8 @@ public final class Mcds extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        Player p = event.getPlayer(); // 入ってきたプレイヤーを取得
-        event.setJoinMessage("§e" + p.getName() + "がサーバーにログインしました"); // メッセージを変更
+        Player p = event.getPlayer(); 
+        event.setJoinMessage("§e" + p.getName() + "がサーバーにログインしました"); 
     }
 }
  
