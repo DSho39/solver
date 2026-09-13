@@ -21,7 +21,7 @@ Minecraft (Paper 1.21.4) 向けの謎解きワールド用ヒント表示＆ロ�
 本プラグインを含めたサーバーを動作させるには、専用のサーバーファイルが必要です。以下の手順でサーバーを立ち上げてください。
 
 1. **サーバーファイルのダウンロード**  
-   [こちらのGoogleドライブ](https://drive.google.com/drive/folders/1JPDqidJpuDWxEZBdMQsQucyr-aK3ps6j) にアクセスし、中に入っているPaperサーバーファイル一式をダウンロードしてください。  
+   [こちらのGoogleドライブ](https://drive.google.com/drive/folders/1cwG_3KMC41Uz8KVOb4LWkwIsuYXbC9BG?usp=sharing) にアクセスし、中に入っているPaperサーバーファイル一式をダウンロードしてください。  
    ※ **このファイルをダウンロードして使用しないと、本プラグインは動作しません。**
 
 2. **プラグインの配置**  
