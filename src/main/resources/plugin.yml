@@ -1,0 +1,8 @@
+name: helloMC
+version: '1.0-SNAPSHOT'
+main: org.fc.helloMC.HelloMC
+api-version: '1.21'
+commands:
+  test:
+  cats:
+  count:
